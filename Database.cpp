@@ -13,16 +13,64 @@ void Database::printFaculty()
 		
 void Database::findStudent(int ID)
 {
-	masterStudent.find(ID);
+	TreeNode<T> *curr=root;
+	if(curr==NULL)
+		cout<< "Database is empty"<<endl;
+	else
+	{
+		while(true)
+		{
+			if(ID<curr->key)
+			{
+				curr=curr->left;
+			}
+			else if(ID>curr->key)
+			{
+				curr=curr->right;
+			}
+			else if(ID==curr->key)
+			{
+				cout<< curr->data.printAll()<< endl;
+			}
+			else if(curr==NULL)
+			{	
+				cout<< "Student not found."<<endl;
+			}
+		}
+	}
 }
 void Database::findFaculty(int ID)
 {
-	masterFaculty.find(ID);
+	TreeNode<T> *curr=masterStudent->root;
+	if(curr==NULL)
+		cout<< "Database is empty"<<endl;
+	else
+	{
+		while(true)
+		{
+			if(ID<curr->key)
+			{
+				curr=curr->left;
+			}
+			else if(ID>curr->key)
+			{
+				curr=curr->right;
+			}
+			else if(ID==curr->key)
+			{
+				cout<< curr->data.printAll()<< endl;
+			}
+			else if(curr==NULL)
+			{	
+				cout<< "Advisor not found."<<endl;
+			}
+		}
+	}
 }
 		
 void Databse::findStudentAdv(int ID)
 {
-	
+	if(
 }
 void Database::printAdvStudents(int ID)
 {
@@ -36,8 +84,7 @@ void Database::switchStudentAdv()
 void Database::removeAdv(int ID)
 {
 	
-}
-		
+}	
 void Datalbase::rollback()
 {
 	
@@ -45,10 +92,10 @@ void Datalbase::rollback()
 		
 void Database::mainLoop()
 {
-	if(ifstream("facultyTable.txt") && ifstream("studentT	able.txt"))
+	string keepGoing="yes";
+	while(keepGoing=="yes")
 	{
-		string keepGoing="yes";
-		while(keepGoing=="yes")
+		if(ifstream("facultyTable.txt") && ifstream("studentTable.txt"))
 		{
 			string answer;
 			cout<<"Which option would you like to complete: "<<endl;
@@ -129,11 +176,22 @@ void Database::mainLoop()
 				cout<< "Invalid entry" << endl;
 			}
 		}
-	}
-	else
-	{
+		else
+		{
+			ofstream outfile ("FacultyTable.txt");
+
+			outfile << "Faculty Table" << endl;
+
+			outfile.close();
 		
+			ofstream outifle("StudentTable.txt");
+		
+			outfile<< "Student Table"<< endl;
+		
+			outfile.close();
+		
+		}
+		cout<< "Would you like to complete another operation? ('yes'/'no')" <<endl;
+		cin>> keepGoing;
 	}
-	
-	
 }
