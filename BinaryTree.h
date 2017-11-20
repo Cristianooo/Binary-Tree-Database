@@ -12,7 +12,7 @@ class BinaryTree
 		BinaryTree();
 		~BinaryTree();
 		
-		int find(int key);
+		T find(int key);
 		void insert(int key, T data);
 		int remove(int key);
 		bool deleteNode(int k);
@@ -37,7 +37,7 @@ BinaryTree<T>::~BinaryTree()
 }
 
 template <class T>
-int BinaryTree<T>::find(int key)                  
+T BinaryTree<T>::find(int key)                  
 {
 	TreeNode<T> *curr=root;
 	if(curr==NULL)
@@ -56,7 +56,7 @@ int BinaryTree<T>::find(int key)
 			}
 			else if(key==curr->key)
 			{
-				return 1;
+				return curr->data;
 			}
 			else if(curr==NULL)
 			{	
@@ -69,7 +69,9 @@ int BinaryTree<T>::find(int key)
 template <class T>
 void BinaryTree<T>::insert(int key, T data)
 {
-	TreeNode<T> *node= new TreeNode<T>(key, data);
+	TreeNode<T> *node;
+	node->data=data;
+	node->key=key;
 
 	
 	if(root==NULL)
@@ -258,9 +260,5 @@ T BinaryTree<T>::getMax()
 	}
 	return c->data;
 }
-
-
-
-
 
 

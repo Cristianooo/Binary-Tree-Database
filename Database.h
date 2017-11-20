@@ -4,25 +4,29 @@
 #include "Faculty.h"
 
 using namespace std;
-class Student
+class Database
 {
 	private:
-		BinaryTree<T> *masterFaculty;
-		BinaryTree<T> *masterStudent;
-	
-	
-		BinaryTree<T> *studentPrev;				//Student Rollbacks
-		BinaryTree<T> *studentPrev1;
-		BinaryTree<T> *studentPrev2;
-		BinaryTree<T> *studentPrev3;
-		BinaryTree<T> *studentPrev4;
+		BinaryTree<Faculty> *masterFaculty;
+		BinaryTree<Student> *masterStudent;
 		
-		BinaryTree<T> *facultyPrev;				//Faculty Rollbacks
-		BinaryTree<T> *facultyPrev1;
-		BinaryTree<T> *facultyPrev2;
-		BinaryTree<T> *facultyPrev3;
-		BinaryTree<T> *facultyPrev4;
+		BinaryTree<Faculty> *facultyPrev;				//Faculty Rollbacks
+		BinaryTree<Faculty> *facultyPrev1;
+		BinaryTree<Faculty> *facultyPrev2;
+		BinaryTree<Faculty> *facultyPrev3;
+		BinaryTree<Faculty> *facultyPrev4;
+	
+	
+		BinaryTree<Student> *studentPrev;				//Student Rollbacks
+		BinaryTree<Student> *studentPrev1;
+		BinaryTree<Student> *studentPrev2;
+		BinaryTree<Student> *studentPrev3;
+		BinaryTree<Student> *studentPrev4;
+		
 	public:
+		Database();
+		~Database();
+		
 		void printStudents();
 		void printFaculty();
 		

@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Person.h"
+
 using namespace std;
 
 class Faculty : public Person

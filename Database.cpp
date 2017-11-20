@@ -2,6 +2,15 @@
 
 using namespace std;
 
+Database::Database()
+{
+	
+}
+Database::~Database()
+{
+	
+}
+
 void Database::printStudents()
 {
 	masterStudent.InOrder();
@@ -13,64 +22,18 @@ void Database::printFaculty()
 		
 void Database::findStudent(int ID)
 {
-	TreeNode<T> *curr=root;
-	if(curr==NULL)
-		cout<< "Database is empty"<<endl;
-	else
-	{
-		while(true)
-		{
-			if(ID<curr->key)
-			{
-				curr=curr->left;
-			}
-			else if(ID>curr->key)
-			{
-				curr=curr->right;
-			}
-			else if(ID==curr->key)
-			{
-				cout<< curr->data.printAll()<< endl;
-			}
-			else if(curr==NULL)
-			{	
-				cout<< "Student not found."<<endl;
-			}
-		}
-	}
+	cout<<masterStudent.find(ID).printAll()<<endl;					//Finds the student, uses a function to show all his data.
 }
+
 void Database::findFaculty(int ID)
 {
-	TreeNode<T> *curr=masterStudent->root;
-	if(curr==NULL)
-		cout<< "Database is empty"<<endl;
-	else
-	{
-		while(true)
-		{
-			if(ID<curr->key)
-			{
-				curr=curr->left;
-			}
-			else if(ID>curr->key)
-			{
-				curr=curr->right;
-			}
-			else if(ID==curr->key)
-			{
-				cout<< curr->data.printAll()<< endl;
-			}
-			else if(curr==NULL)
-			{	
-				cout<< "Advisor not found."<<endl;
-			}
-		}
-	}
+	cout<<masterFaculty.find(ID).printAll()<<endl;
 }
 		
-void Databse::findStudentAdv(int ID)
+void Database::findStudentAdv(int ID)
 {
-	if(
+	int AdvisorID=masterStudent.find(ID).getAdvisor();
+	cout<<masterFaculty.find(AdvisorID).printAll()<<endl;
 }
 void Database::printAdvStudents(int ID)
 {
@@ -97,7 +60,7 @@ void Database::mainLoop()
 	{
 		if(ifstream("facultyTable.txt") && ifstream("studentTable.txt"))
 		{
-			string answer;
+			string option;
 			cout<<"Which option would you like to complete: "<<endl;
 			cout<< "1. Print all students and their information "<<endl;
 			cout<< "2. Print all faculty and their information " <<endl;
@@ -113,37 +76,50 @@ void Database::mainLoop()
 			cout<< "12. Remove an advisee from a faculty member given the ids " <<endl;
 			cout<< "13. Rollback " <<endl;
 			cout<< "14. Exit " <<endl;
-			cin>> answer;
+			
+			cout<< "\n Simply type the number you would like to complete. ('1' or '2 or '3' etc.)" <<endl;
+			cin>> option;
 		
-			if(answer == "1")
+			if(option == "1")
+			{
+				printStudents();
+			}
+			else if(option == "2")
+			{
+				printFaculty();
+			}
+			else if(option == "3")
+			{
+				int studentID;
+				cout<< "Please input the ID of the student you would like to find: " <<endl;
+				cin>>studentID;
+				
+				findStudent(studentID);
+				
+			}
+			else if(option == "4")
+			{
+				int advisorID;
+				cout<< "Please input the ID of the advisor you would like to find: "<<endl;
+				cin<<advisorID;
+				
+				findFaculty(advisorID);
+			}
+			else if(option == "5")
+			{
+				int studentID;
+				cout<<"Please input the ID of the student that you would like to find the advisor to." <<endl;
+				findStudentAdv(studentID);
+			}
+			else if(option == "6")
 			{
 		
 			}
-			else if(answer == "2")
+			else if(option == "7")
 			{
 		
 			}
-			else if(answer == "3")
-			{
-		
-			}
-			else if(answer == "4")
-			{
-		
-			}
-			else if(answer == "5")
-			{
-		
-			}
-			else if(answer == "6")
-			{
-		
-			}
-			else if(answer == "7")
-			{
-		
-			}
-			else if(answer == "8")
+			else if(option == "8")
 			{
 		
 			}
@@ -151,23 +127,23 @@ void Database::mainLoop()
 			{
 		
 			}
-			else if(answer == "10")
+			else if(option == "10")
 			{
 		
 			}
-			else if(answer == "11")
+			else if(option == "11")
 			{
 		
 			}
-			else if(answer == "12")
+			else if(option == "12")
 			{
 		
 			}
-			else if(answer == "13")
+			else if(option == "13")
 			{
 		
 			}
-			else if(answer == "14")
+			else if(option == "14")
 			{
 		
 			}
