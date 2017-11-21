@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+#ifndef PERSON_H
+#define PERSON_H
 class Person
 {
 	public:
@@ -19,3 +21,4 @@ class Person
 		void setLevel(string lvl);
 		
 };
+#endif 

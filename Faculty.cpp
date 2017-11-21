@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Faculty.h"
+
 using namespace std;
 
 Faculty:Faculty()
@@ -36,5 +37,13 @@ void Faculty::printAll()
 	for(int i = 0; i < Students.length(); ++i)
 	{
 		cout<< Students[i] <<endl;
+	}
+}
+void Faculty::printStudents()
+{
+	for(int i = 0; i < Students.length(); ++i)
+	{
+		if(Students[i]!=NULL)
+			cout<< Students[i] <<endl;
 	}
 }

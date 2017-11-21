@@ -1,11 +1,14 @@
-#include <iostream>
 #include "Database.h"
+
+#include <iostream>
+
 using namespace std;
 
 
 int main(int argc, char **argv)
 {
-	/*BinaryTree<int> g;
+	/*
+	BinaryTree<int> g;
 	
 	g.insert(4,4);
 	g.insert(2,2);
@@ -16,10 +19,6 @@ int main(int argc, char **argv)
 	g.insert(5, 5);
 	*/
 	
-	Database myDatabase;
-	
-	myDatabase.mainLoop();
-
-		
-	return 0;
+    Database myDatabase;
+    myDatabase.mainLoop();
 }

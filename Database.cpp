@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Database.h"
+#include <fstream>
 
 using namespace std;
 
@@ -37,17 +39,32 @@ void Database::findStudentAdv(int ID)
 }
 void Database::printAdvStudents(int ID)
 {
-	
+	cout<<masterFaculty.find(ID).printStudents();
 }
-		
-void Database::switchStudentAdv()
-{
-	
-}
-void Database::removeAdv(int ID)
+void Database::addStudent()
 {
 	
 }	
+void Database::removeStudent(int ID)
+{
+	
+}	
+void Database::addAdvisor()
+{
+	
+}
+void Database::removeAdvisor(int ID)
+{
+	
+}
+void Database::changeStudentAdv(int studentID, int advisorID)
+{
+	
+}
+void Database::removeAdvStudent(int advisorID, int studentID)
+{
+	
+}
 void Datalbase::rollback()
 {
 	
