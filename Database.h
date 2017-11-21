@@ -7,6 +7,22 @@ using namespace std;
 
 class Database
 {
+	private:
+		BinaryTree<Faculty> *masterFaculty;
+		BinaryTree<Student> *masterStudent;
+		
+		BinaryTree<Faculty> *facultyPrev;				//Faculty Rollbacks
+		BinaryTree<Faculty> *facultyPrev1;
+		BinaryTree<Faculty> *facultyPrev2;
+		BinaryTree<Faculty> *facultyPrev3;
+		BinaryTree<Faculty> *facultyPrev4;
+	
+	
+		BinaryTree<Student> *studentPrev;				//Student Rollbacks
+		BinaryTree<Student> *studentPrev1;
+		BinaryTree<Student> *studentPrev2;
+		BinaryTree<Student> *studentPrev3;
+		BinaryTree<Student> *studentPrev4;
 		
 	public:
 		Database();
@@ -28,26 +44,8 @@ class Database
 		void removeAdvisor();
 		
 		void changeStudentAdv(int studentID, int advisorID);
-		void removeAdvStudent(int advisorID, int studentID)
+		void removeAdvStudent(int advisorID, int studentID);
 		void rollback();
 		
 		void mainLoop();
-		
-	private:
-		BinaryTree<Faculty> *masterFaculty;
-		BinaryTree<Student> *masterStudent;
-		
-		BinaryTree<Faculty> *facultyPrev;				//Faculty Rollbacks
-		BinaryTree<Faculty> *facultyPrev1;
-		BinaryTree<Faculty> *facultyPrev2;
-		BinaryTree<Faculty> *facultyPrev3;
-		BinaryTree<Faculty> *facultyPrev4;
-	
-	
-		BinaryTree<Student> *studentPrev;				//Student Rollbacks
-		BinaryTree<Student> *studentPrev1;
-		BinaryTree<Student> *studentPrev2;
-		BinaryTree<Student> *studentPrev3;
-		BinaryTree<Student> *studentPrev4;
-		
 };

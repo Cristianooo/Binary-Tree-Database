@@ -1,6 +1,4 @@
 #include <iostream>
-
-
 #include "Person.h"
 
 
@@ -18,6 +16,8 @@ class Faculty : public Person
 		~Faculty();
 		
 		string getDepartment();
+		void addStudent(Student *stu);
+		void removeStudent(int studentID);
 		void setDepartment(string D);
 		void printStudents();
 		void printAll();

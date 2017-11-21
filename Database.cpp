@@ -1,9 +1,25 @@
+/*
+a.
+Cristiano Firmani
+Yiftach Nachman
+b.
+2272725 (Cristiano)
+2270838	(Yiftach)
+c.
+firma103
+nachm100
+d.
+CSPC-350 Section 2
+e.
+Assignment 2
+*/
+
 #include <iostream>
 #include "Database.h"
 #include <fstream>
 
 using namespace std;
-
+      
 Database::Database()
 {
 	
@@ -11,17 +27,17 @@ Database::Database()
 Database::~Database()
 {
 	
-}
-
+}  
 void Database::printStudents()
 {
 	masterStudent.InOrder();
 }
+
 void Database::printFaculty()
 {
 	masterFaculty.InOrder();
 }
-		
+
 void Database::findStudent(int ID)
 {
 	cout<<masterStudent.find(ID).printAll()<<endl;					//Finds the student, uses a function to show all his data.
@@ -31,35 +47,78 @@ void Database::findFaculty(int ID)
 {
 	cout<<masterFaculty.find(ID).printAll()<<endl;
 }
-		
+
 void Database::findStudentAdv(int ID)
 {
 	int AdvisorID=masterStudent.find(ID).getAdvisor();
 	cout<<masterFaculty.find(AdvisorID).printAll()<<endl;
 }
+
 void Database::printAdvStudents(int ID)
 {
 	cout<<masterFaculty.find(ID).printStudents();
 }
-void Database::addStudent()
+
+void Database::addStudent(string M, double gpa, int A, int id, string name, string level)
 {
+	Student *tempStudent;
+	tempStudent->Name=name;
+	tempStudent->Level=level;
+	tempStudent->ID=id;
+	tempStudent->Advisor=A;
+	tempStudent->GPA=gpa;
+	tempStudent->Major=M;
 	
+	masterStudent.insert(id, tempStudent);
+	
+	masterFaculty.find(A).addStudent(tempStudent);
 }	
-void Database::removeStudent(int ID)
+void Database::removeStudent(int studentID, int advisorID)
 {
-	
+	masterFaculty.find(advisorID).removeStudent(studentID);
+	masterStudent.deleteNode(studentID);
 }	
-void Database::addAdvisor()
+void Database::addAdvisor(string D, int id, string name, string level)
 {
+	Faculty *tempAdvisor;
+	tempAdvisor->Name=name;
+	tempAdvisor->Level=level;
+	tempAdvisor->ID=id;
+	tempAdvisor->Department=D;
 	
+	masterFaculty.insert(id, tempAdvisor);
 }
-void Database::removeAdvisor(int ID)
+void Database::removeAdvisor(int advisorID, int newAdvisorID)
 {
+	Faculty *oldAdvisor=masterFaculty.find(advisorID);				//Finds the necessary advisors and then moves any of the students from the advisor being deleted
+	Faculty *newAdvisor=masterFaculty.find(newAdvisorID);
 	
+	int loopAmt=oldAdvisor->Students.length();
+	for(int i = 0; i < loopAmt; ++i)
+	{
+		if(oldAdvisor->Students[i]!=NULL)
+		{
+			newAdvisor->Students.add(Students[i];
+		}
+	}
+
 }
 void Database::changeStudentAdv(int studentID, int advisorID)
 {
+	int currentAdvisorID=masterStudent.find(studentID).getAdvisor();
 	
+	if(masterFaculty.find(currentAdvisorID).findStudent(studentID)!=0)
+	{
+		Student *tempStudent=masterFaculty.find(currentAdvisorID).findStudent(studentID);
+		Faculty *oldAdvisor=masterFaculty.find(currentAdvisorID);	
+		Faculty *newAdvisor=masterFaculty.find(advisorID);
+		
+		newAdvisor->addStudent(tempStudent);
+		
+		
+	}
+	else
+		cout<<"Student not found." <<endl;
 }
 void Database::removeAdvStudent(int advisorID, int studentID)
 {
@@ -69,7 +128,6 @@ void Datalbase::rollback()
 {
 	
 }
-		
 void Database::mainLoop()
 {
 	string keepGoing="yes";

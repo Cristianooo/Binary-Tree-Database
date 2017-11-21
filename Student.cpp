@@ -2,14 +2,14 @@
 #include "Student.h"
 using namespace std;
 
-Student::Student()
+Student::Student():Person()
 {
 	Major = " ";
 	GPA = 0;
 	Advisor = 0;
 }
 
-Student::Student(string M, double gpa, int A)
+Student::Student(string M, double gpa, int A):Person(int id, string name, string level)
 {
 	Major=M;
 	GPA=gpa;
