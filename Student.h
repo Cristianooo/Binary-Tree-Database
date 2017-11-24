@@ -34,6 +34,7 @@ class Student
 		void printAll();
 		void empty();
 		bool operator==(Student &stu);
+		friend ostream& operator<<(ostream& os, const Student& stu);
 		
 };
 #endif

@@ -30,12 +30,12 @@ Database::~Database()
 }  
 void Database::printStudents()
 {
-	//masterStudent->InOrder(masterStudent->root);
+	masterStudent->InOrder(masterStudent->getRoot());
 }
 
 void Database::printFaculty()
 {
-	//masterFaculty->InOrder(masterFaculty->root);
+	masterFaculty->InOrder(masterFaculty->getRoot());
 }
 
 void Database::findStudent(int ID)
@@ -344,9 +344,4 @@ void Database::mainLoop()
 		cout<< "Would you like to complete another operation? ('yes'/'no')" <<endl;
 		cin>> keepGoing;
 	}
-}
-int main(int argc, char **argv)
-{
-	Database myDatabase;
-	myDatabase.mainLoop();
 }

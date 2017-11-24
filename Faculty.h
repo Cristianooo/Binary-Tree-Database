@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Student.h"
-#include "SingleLinked.h"
+#include "singleLinked.h"
 
 using namespace std;
 
@@ -31,4 +31,5 @@ class Faculty
 		void setDepartment(string D);
 		void printStudents();
 		void printAll();
+		friend ostream& operator<<(ostream& os, const Faculty& advisor);
 };

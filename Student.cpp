@@ -106,3 +106,11 @@ bool Student::operator==(Student &stu)
 	else
    		return false;
 }
+ostream& operator<<(ostream& os, const Student& stu)
+{
+	os<<stu.Name<<endl;
+	os<<stu.ID<<endl;
+	os<<stu.Level<<endl;
+	os<<stu.Major<<endl;
+	return os;
+}

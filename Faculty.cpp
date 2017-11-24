@@ -118,3 +118,11 @@ void Faculty::printStudents()
 			cout<< tempStudent.getName() <<endl;
 	}
 }
+ostream& operator<<(ostream& os, const Faculty& advisor)
+{
+	os<<advisor.Name<<endl;
+	os<<advisor.ID<<endl;
+	os<<advisor.Level<<endl;
+	os<<advisor.Department<<endl;
+	return os;
+}

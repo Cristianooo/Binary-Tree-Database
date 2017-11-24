@@ -22,7 +22,7 @@ class Database
 		BinaryTree<Student> *studentPrev3;
 		BinaryTree<Student> *studentPrev4;
 		
-		//genstack<*BinaryTree<Faculty> > Rollbacks;
+		//genstack<BinaryTree<Faculty>*> Rollbacks= new genstack<BinaryTree<Faculty>*>;
 		
 	public:
 		Database();

@@ -18,6 +18,7 @@ class BinaryTree
 		int remove(int key);
 		bool deleteNode(int k);
 		TreeNode<T>* getSuccessor(TreeNode<T> *d);
+		TreeNode<T>* getRoot();
 		
 		void InOrder(TreeNode<T> *n);				//Print Methods
 		void PreOrder(TreeNode<T> *n);
@@ -227,12 +228,18 @@ TreeNode<T>* BinaryTree<T>::getSuccessor(TreeNode<T> *d)
 }
 
 template <class T>
+TreeNode<T>* BinaryTree<T>::getRoot()
+{
+	return root;
+}
+
+template <class T>
 void BinaryTree<T>::InOrder(TreeNode<T> *n)
 {
 		if(n!=NULL)
 		{
 			InOrder(n->left);
-			cout<<n->key<<n->data<<endl;
+			cout<<n->data<<endl;
 			InOrder(n->right);
 		}
 }
