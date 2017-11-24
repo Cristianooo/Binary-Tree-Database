@@ -2,15 +2,21 @@
 #include "Student.h"
 using namespace std;
 
-Student::Student():Person()
+Student::Student()
 {
+	ID = 0;
+	Name = " ";
+	Level = " ";
 	Major = " ";
 	GPA = 0;
 	Advisor = 0;
 }
 
-Student::Student(string M, double gpa, int A):Person(int id, string name, string level)
+Student::Student(int id, string name, string level, string M, double gpa, int A)
 {
+	ID = id;
+	Name= name;
+	Level = level;
 	Major=M;
 	GPA=gpa;
 	Advisor=A;
@@ -18,7 +24,35 @@ Student::Student(string M, double gpa, int A):Person(int id, string name, string
 Student::~Student()
 {
 }
+int Student::getID()
+{
+	return ID;
+}
 
+string Student::getName()
+{
+	return Name;
+}
+
+string Student::getLevel()
+{
+	return Level;
+}
+
+void Student::setID(int id)
+{
+	ID = id;
+}
+
+void Student::setName(string nm)
+{
+	Name = nm;
+}
+
+void Student::setLevel(string lvl)
+{
+	Level = lvl;
+}
 string Student::getMajor()
 {
 	return Major;
@@ -51,9 +85,24 @@ void Student::setAdvisor(int A)
 
 void Student::printAll()
 {
-	getMajor();
-	getGPA();
-	getAdvisor();
+	cout<<getMajor()<<endl;
+	cout<<getGPA()<<endl;
+	cout<<getAdvisor()<<endl;
 }
-
-
+void Student::empty()
+{
+	ID = 0;
+	Name = " ";
+	Level = " ";
+	Major = " ";
+	GPA = 0;
+	Advisor = 0;
+}
+bool Student::operator==(Student &stu)
+{
+	if(ID==stu.getID() && Name==stu.getName() && Level==stu.getLevel() && Major==stu.getMajor()
+   && GPA==stu.getGPA())
+   		return true;
+	else
+   		return false;
+}

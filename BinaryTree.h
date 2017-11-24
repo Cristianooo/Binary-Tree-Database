@@ -12,7 +12,8 @@ class BinaryTree
 		BinaryTree();
 		~BinaryTree();
 		
-		T find(int key);
+		int find(int key);
+		T returnData(int key);
 		void insert(int key, T data);
 		int remove(int key);
 		bool deleteNode(int k);
@@ -37,7 +38,7 @@ BinaryTree<T>::~BinaryTree()
 }
 
 template <class T>
-T BinaryTree<T>::find(int key)                  
+int BinaryTree<T>::find(int key)                  
 {
 	TreeNode<T> *curr=root;
 	if(curr==NULL)
@@ -56,7 +57,7 @@ T BinaryTree<T>::find(int key)
 			}
 			else if(key==curr->key)
 			{
-				return curr->data;
+				return 1;
 			}
 			else if(curr==NULL)
 			{	
@@ -65,6 +66,27 @@ T BinaryTree<T>::find(int key)
 		}
 	}
 }
+template <class T>
+T BinaryTree<T>::returnData(int key)                  
+{
+	TreeNode<T> *curr=root;
+	while(true)
+	{
+		if(key<curr->key)
+		{
+			curr=curr->left;
+		}
+		else if(key>curr->key)
+		{
+			curr=curr->right;
+		}
+		else if(key==curr->key)
+		{
+			return curr->data;
+		}
+	}
+}
+
 
 template <class T>
 void BinaryTree<T>::insert(int key, T data)

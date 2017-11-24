@@ -1,9 +1,7 @@
-#include <iostream>
 #include "BinaryTree.h"
 #include "Student.h"
 #include "Faculty.h"
-
-using namespace std;
+#include "genstack.h"
 
 class Database
 {
@@ -24,6 +22,8 @@ class Database
 		BinaryTree<Student> *studentPrev3;
 		BinaryTree<Student> *studentPrev4;
 		
+		//genstack<*BinaryTree<Faculty> > Rollbacks;
+		
 	public:
 		Database();
 		~Database();
@@ -31,17 +31,17 @@ class Database
 		void printStudents();
 		void printFaculty();
 		
-		void findStudent();
-		void findFaculty();
+		void findStudent(int ID);
+		void findFaculty(int ID);
 		
 		void findStudentAdv(int ID);
 		void printAdvStudents(int ID);
 		
-		void addStudent();
-		void removeStudent(int ID);
+		void addStudent(string M, double gpa, int A, int id, string name, string level);
+		void removeStudent(int studentID);
 		
-		void addAdvisor();
-		void removeAdvisor();
+		void addAdvisor(string D, int id, string name, string level);
+		void removeAdvisor(int advisorID, int newAdvisorID);
 		
 		void changeStudentAdv(int studentID, int advisorID);
 		void removeAdvStudent(int advisorID, int studentID);

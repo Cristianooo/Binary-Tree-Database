@@ -1,19 +1,29 @@
 #include <iostream>
-#include "Person.h"
 
 using namespace std;
 
-class Student : public Person
+#ifndef STUDENT_H
+#define STUDENT_H
+class Student
 {
 	public:
+		int ID;
+		string Name;
+		string Level;
 		string Major;
 		double GPA;
 		int Advisor;
 		
 		Student();
-		Student(string M, double gpa, int A);
+		Student(int id, string name, string level, string M, double gpa, int A);
 		~Student();
 		
+		int getID();
+		string getName();
+		string getLevel();
+		void setID(int id);
+		void setName(string nm);
+		void setLevel(string lvl);
 		string getMajor();
 		double getGPA();
 		int getAdvisor();
@@ -22,5 +32,8 @@ class Student : public Person
 		void setAdvisor(int A);
 		
 		void printAll();
+		void empty();
+		bool operator==(Student &stu);
 		
 };
+#endif
