@@ -18,13 +18,13 @@ class genstack
 		int top;
 		int max;
 		
-		char *myArray;
+		T *myArray;
 };
 
 template <class T>
 genstack<T>::genstack(int maxsize)
 {
-	myArray = new char[maxsize];
+	myArray = new T[maxsize];
 	max = maxsize;
 	top= -1;
 }
@@ -32,8 +32,7 @@ genstack<T>::genstack(int maxsize)
 template <class T>
 genstack<T>::~genstack()
 {
-	delete [] myArray;
-	cout << "object destroyed" << endl; 
+	delete [] myArray; 
 }
 
 template <class T>
@@ -51,7 +50,7 @@ T genstack<T>::pop()
 	if(top != -1)						//need to check if empty
 		return myArray[top--];
 	else
-		return cout << "Your array is empty" << endl;
+		return myArray[0];
 }
 
 template <class T>
@@ -60,7 +59,7 @@ T genstack<T>::peek()
 	if(top != -1)						//need to check if empty
 		return myArray[top];
 	else
-		return cout << "Your array is empty" << endl;
+		return myArray[0];
 }
 
 template <class T>

@@ -6,8 +6,8 @@
 class Database
 {
 	private:
-		BinaryTree<Faculty> *masterFaculty;
-		BinaryTree<Student> *masterStudent;
+		BinaryTree<Faculty> masterFaculty;
+		BinaryTree<Student> masterStudent;
 		
 		BinaryTree<Faculty> *facultyPrev;				//Faculty Rollbacks
 		BinaryTree<Faculty> *facultyPrev1;
@@ -22,7 +22,10 @@ class Database
 		BinaryTree<Student> *studentPrev3;
 		BinaryTree<Student> *studentPrev4;
 		
-		//genstack<BinaryTree<Faculty>*> Rollbacks= new genstack<BinaryTree<Faculty>*>;
+		genstack<BinaryTree<Faculty>*> facultyRollback=genstack<BinaryTree<Faculty>*>(5);
+		genstack<BinaryTree<Student>*> studentRollback=genstack<BinaryTree<Student>*>(5);
+		
+		genstack<int> options=genstack<int>(5);
 		
 	public:
 		Database();
@@ -46,6 +49,10 @@ class Database
 		void changeStudentAdv(int studentID, int advisorID);
 		void removeAdvStudent(int advisorID, int studentID);
 		void rollback();
+		
+		void emptyStudentStack(genstack <BinaryTree<Student>*> studentRollback);
+		void emptyFacultyStack(genstack <BinaryTree<Faculty>*> facultyRollback);
+		void fixOptionStack(genstack<int> options);
 		
 		void mainLoop();
 };

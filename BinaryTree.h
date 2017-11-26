@@ -9,6 +9,7 @@ class BinaryTree
 	private:
 		TreeNode<T> *root;
 	public:
+
 		BinaryTree();
 		~BinaryTree();
 		
@@ -92,15 +93,19 @@ T BinaryTree<T>::returnData(int key)
 template <class T>
 void BinaryTree<T>::insert(int key, T data)
 {
-	TreeNode<T> *node;
-	node->data=data;
-	node->key=key;
-
-	
+	cout<<"3"<<endl;
+	TreeNode<T> *node=new TreeNode<T>(data, key);
+	cout<<"3"<<endl;
+	TreeNode<T> *test=root;
+	cout<<"3"<<endl;
 	if(root==NULL)
+	{
+		cout<<"3"<<endl;
 		node=root;
+	}
 	else
 	{
+		cout<<"3"<<endl;
 		TreeNode<T> *parent;
 		TreeNode<T> *curr=root;
 		while(true)
